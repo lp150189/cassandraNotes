@@ -9,7 +9,7 @@
 
 3. How nodes are configured into racks and data center
 	* **Rack**: a logical group of racks
-	* **Data Center **: a logical group of racks
+	* **Data Center**: a logical group of racks
 
 4. Replication strategy and replication factor are configured as part of declaring a new keyspace
 For example:
