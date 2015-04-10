@@ -1,0 +1,314 @@
+create keyspace Cache_v_0_1
+;
+use Cache_v_0_1;
+
+
+CREATE COLUMN FAMILY TokenStatus WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY ClientTokens WITH comparator = UTF8Type  AND key_validation_class=UTF8Type AND default_validation_class=UTF8Type;
+
+  
+CREATE COLUMN FAMILY Titles WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND column_metadata = [{column_name: container, validation_class: UTF8Type}];
+CREATE COLUMN FAMILY Products WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND column_metadata = [ {column_name: container, validation_class: UTF8Type}];
+
+   
+CREATE COLUMN FAMILY AccountsById WITH comparator = UTF8Type  AND key_validation_class=LongType AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY AccountsByOnlineId WITH comparator = UTF8Type  AND key_validation_class=UTF8Type AND default_validation_class=UTF8Type;
+
+
+CREATE COLUMN FAMILY ServiceIdInfo with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+CREATE COLUMN FAMILY ServiceList with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+CREATE COLUMN FAMILY RelatedTitleList with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+ 
+CREATE COLUMN FAMILY ProductRatings with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+CREATE COLUMN FAMILY SelfProfiles WITH comparator='CompositeType(UTF8Type,UTF8Type,UTF8Type,UTF8Type)' AND key_validation_class='UTF8Type' AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY TrophyDetails WITH comparator = UTF8Type AND key_validation_class='CompositeType(UTF8Type, IntegerType)' AND default_validation_class=UTF8Type;
+
+  
+CREATE COLUMN FAMILY PlayGoManifest with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+
+ 
+CREATE COLUMN FAMILY AddressByPostalCode with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+
+
+CREATE COLUMN FAMILY HomeShareStatus with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+
+
+
+CREATE COLUMN FAMILY ThirdPartyStoryAccessibility WITH comparator=LongType AND key_validation_class='CompositeType(LongType, UTF8Type)' AND default_validation_class=IntegerType;
+CREATE COLUMN FAMILY ThirdPartyContentAccessibility WITH comparator=UTF8Type AND key_validation_class=UTF8Type AND default_validation_class=IntegerType;
+CREATE COLUMN FAMILY FriendRecommendations WITH comparator=UTF8Type AND key_validation_class='CompositeType(LongType, IntegerType, IntegerType, IntegerType, IntegerType, IntegerType)' AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY UCRPAvatarUrls WITH comparator=UTF8Type AND key_validation_class=UTF8Type AND default_validation_class=IntegerType;
+CREATE COLUMN FAMILY ThirdPartyFriends WITH comparator = UTF8Type AND key_validation_class='CompositeType(UTF8Type, UTF8Type)' AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY YouMayKnowRecommendations WITH comparator=UTF8Type AND key_validation_class='CompositeType(LongType, IntegerType, IntegerType, IntegerType, IntegerType, IntegerType, IntegerType)' AND default_validation_class=UTF8Type;
+
+create keyspace Catalog
+;
+use Catalog;
+
+                CREATE COLUMN FAMILY ContainersFull WITH comparator = UTF8Type AND key_validation_class=UTF8Type;
+                CREATE COLUMN FAMILY StoreContainers WITH comparator = UTF8Type AND key_validation_class=UTF8Type;
+
+
+CREATE COLUMN FAMILY Containers WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class = UTF8Type;
+CREATE COLUMN FAMILY ContainerEntitlements WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class = UTF8Type;
+CREATE COLUMN FAMILY ContainerTitles WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class = UTF8Type;
+CREATE COLUMN FAMILY Products WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class = UTF8Type;
+CREATE COLUMN FAMILY RelatedTitles with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+CREATE COLUMN FAMILY RelatedTitleList with comparator = UTF8Type and key_validation_class = UTF8Type and default_validation_class = UTF8Type;
+
+create keyspace Configuration
+;
+use Configuration;
+
+create COLUMN FAMILY Features WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class=LongType;
+create column family cors WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class=LongType;
+create column family cors_allow_headers WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class=UTF8Type;
+create column family cors_supported_methods WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class=UTF8Type;
+
+create keyspace Friendlist
+;
+use Friendlist;
+
+CREATE COLUMN FAMILY PrivacyPolicies WITH comparator = LongType AND key_validation_class=LongType AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY PrivacySettings WITH comparator = UTF8Type AND key_validation_class=LongType AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY TeamDetails WITH comparator = UTF8Type AND key_validation_class=TimeUUIDType AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY UserTeams WITH comparator = TimeUUIDType AND key_validation_class=LongType AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY TeamMembers WITH comparator = LongType AND key_validation_class=TimeUUIDType AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY Friends WITH comparator = LongType AND key_validation_class=LongType AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY FriendsUpdateInfo WITH comparator = UTF8Type AND key_validation_class=LongType AND default_validation_class=LongType;
+CREATE COLUMN FAMILY FriendsSyncInfo WITH comparator = LongType AND key_validation_class=LongType AND default_validation_class=LongType;
+CREATE COLUMN FAMILY FriendsAccountIds WITH comparator = LongType AND key_validation_class=LongType AND default_validation_class=IntegerType;
+CREATE COLUMN FAMILY friends_title_stats WITH comparator = UTF8Type AND key_validation_class=UTF8Type AND default_validation_class=UTF8Type;
+CREATE COLUMN FAMILY MessageSettings WITH comparator = UTF8Type AND key_validation_class=LongType AND default_validation_class=UTF8Type;
+
+use Configuration;
+
+set Features[MX][activityFeed] = 0;
+set Features[CL][activityFeed] = 0;
+set Features[AR][activityFeed] = 0;
+set Features[BR][activityFeed] = 0;
+set Features[GB][activityFeed] = 0;
+set Features[IE][activityFeed] = 0;
+set Features[BE][activityFeed] = 0;
+set Features[LU][activityFeed] = 0;
+set Features[NL][activityFeed] = 0;
+set Features[FR][activityFeed] = 0;
+set Features[DE][activityFeed] = 0;
+set Features[AT][activityFeed] = 0;
+set Features[CH][activityFeed] = 0;
+set Features[IT][activityFeed] = 0;
+set Features[PT][activityFeed] = 0;
+set Features[DK][activityFeed] = 0;
+set Features[FI][activityFeed] = 0;
+set Features[NO][activityFeed] = 0;
+set Features[SE][activityFeed] = 0;
+set Features[AU][activityFeed] = 0;
+set Features[NZ][activityFeed] = 0;
+set Features[ES][activityFeed] = 0;
+set Features[RU][activityFeed] = 0;
+set Features[AE][activityFeed] = 0;
+set Features[ZA][activityFeed] = 0;
+set Features[PL][activityFeed] = 0;
+set Features[GR][activityFeed] = 0;
+set Features[SA][activityFeed] = 0;
+set Features[CZ][activityFeed] = 0;
+set Features[TR][activityFeed] = 0;
+set Features[IN][activityFeed] = 0;
+set Features[HR][activityFeed] = 0;
+set Features[SI][activityFeed] = 0;
+set Features[KW][activityFeed] = 0;
+set Features[IL][activityFeed] = 0;
+set Features[UA][activityFeed] = 0;
+set Features[BG][activityFeed] = 0;
+set Features[HU][activityFeed] = 0;
+set Features[HK][activityFeed] = 0;
+set Features[TW][activityFeed] = 0;
+set Features[SG][activityFeed] = 0;
+set Features[MY][activityFeed] = 0;
+set Features[ID][activityFeed] = 0;
+set Features[TH][activityFeed] = 0;
+set Features[KR][activityFeed] = 0;
+set Features[JP][activityFeed] = 0;
+set Features[US][activityFeed] = 0;
+set Features[CA][activityFeed] = 0;
+set Features[CO][activityFeed] = 0;
+set Features[PE][activityFeed] = 0;
+set Features[US][commerce] = 0;
+set Features[MX][commerce] = 0;
+set Features[CL][commerce] = 0;
+set Features[AR][commerce] = 0;
+set Features[BR][commerce] = 0;
+set Features[GB][commerce] = 0;
+set Features[IE][commerce] = 0;
+set Features[BE][commerce] = 0;
+set Features[LU][commerce] = 0;
+set Features[NL][commerce] = 0;
+set Features[FR][commerce] = 0;
+set Features[DE][commerce] = 0;
+set Features[AT][commerce] = 0;
+set Features[CH][commerce] = 0;
+set Features[IT][commerce] = 0;
+set Features[PT][commerce] = 0;
+set Features[DK][commerce] = 0;
+set Features[FI][commerce] = 0;
+set Features[NO][commerce] = 0;
+set Features[SE][commerce] = 0;
+set Features[AU][commerce] = 0;
+set Features[NZ][commerce] = 0;
+set Features[ES][commerce] = 0;
+set Features[RU][commerce] = 0;
+set Features[AE][commerce] = 0;
+set Features[ZA][commerce] = 0;
+set Features[PL][commerce] = 0;
+set Features[GR][commerce] = 0;
+set Features[SA][commerce] = 0;
+set Features[CZ][commerce] = 0;
+set Features[TR][commerce] = 0;
+set Features[IN][commerce] = 0;
+set Features[HR][commerce] = 0;
+set Features[SI][commerce] = 0;
+set Features[KW][commerce] = 0;
+set Features[IL][commerce] = 0;
+set Features[UA][commerce] = 0;
+set Features[BG][commerce] = 0;
+set Features[HU][commerce] = 0;
+set Features[HK][commerce] = 0;
+set Features[TW][commerce] = 0;
+set Features[SG][commerce] = 0;
+set Features[MY][commerce] = 0;
+set Features[ID][commerce] = 0;
+set Features[TH][commerce] = 0;
+set Features[KR][commerce] = 0;
+set Features[JP][commerce] = 0;
+set Features[CO][commerce] = 0;
+set Features[PE][commerce] = 0;
+set Features[MX][liveArea] = 0;
+set Features[CL][liveArea] = 0;
+set Features[AR][liveArea] = 0;
+set Features[BR][liveArea] = 0;
+set Features[GB][liveArea] = 0;
+set Features[IE][liveArea] = 0;
+set Features[BE][liveArea] = 0;
+set Features[LU][liveArea] = 0;
+set Features[NL][liveArea] = 0;
+set Features[FR][liveArea] = 0;
+set Features[DE][liveArea] = 0;
+set Features[AT][liveArea] = 0;
+set Features[CH][liveArea] = 0;
+set Features[IT][liveArea] = 0;
+set Features[PT][liveArea] = 0;
+set Features[DK][liveArea] = 0;
+set Features[FI][liveArea] = 0;
+set Features[NO][liveArea] = 0;
+set Features[SE][liveArea] = 0;
+set Features[AU][liveArea] = 0;
+set Features[NZ][liveArea] = 0;
+set Features[ES][liveArea] = 0;
+set Features[RU][liveArea] = 0;
+set Features[AE][liveArea] = 0;
+set Features[ZA][liveArea] = 0;
+set Features[PL][liveArea] = 0;
+set Features[GR][liveArea] = 0;
+set Features[SA][liveArea] = 0;
+set Features[CZ][liveArea] = 0;
+set Features[TR][liveArea] = 0;
+set Features[IN][liveArea] = 0;
+set Features[HR][liveArea] = 0;
+set Features[SI][liveArea] = 0;
+set Features[KW][liveArea] = 0;
+set Features[IL][liveArea] = 0;
+set Features[UA][liveArea] = 0;
+set Features[BG][liveArea] = 0;
+set Features[HU][liveArea] = 0;
+set Features[HK][liveArea] = 0;
+set Features[TW][liveArea] = 0;
+set Features[SG][liveArea] = 0;
+set Features[MY][liveArea] = 0;
+set Features[ID][liveArea] = 0;
+set Features[TH][liveArea] = 0;
+set Features[KR][liveArea] = 0;
+set Features[JP][liveArea] = 0;
+set Features[US][liveArea] = 0;
+set Features[CO][commerce] = 0;
+set Features[PE][commerce] = 0;
+
+use Configuration;
+
+set cors['GET']['kamaji_activity'] = 1;
+set cors['DELETE']['kamaji_activity'] = 1;
+set cors['POST']['kamaji_activity'] = 1;
+
+set cors['GET']['d1-np.store.sonyentertainmentnetwork.com'] = 1;
+set cors['OPTIONS']['d1-np.store.sonyentertainmentnetwork.com'] = 1;
+set cors_allow_headers['GET']['d1-np.store.sonyentertainmentnetwork.com'] = 'Kamaji-Client';
+set cors_allow_headers['OPTIONS']['d1-np.store.sonyentertainmentnetwork.com'] = 'Kamaji-Client';
+
+set cors['GET']['webstore.e1-np.sonyentertainmentnetwork.com'] = 1;
+set cors['OPTIONS']['webstore.e1-np.sonyentertainmentnetwork.com'] = 1;
+set cors_allow_headers['GET']['webstore.e1-np.sonyentertainmentnetwork.com'] = 'Kamaji-Client';
+set cors_allow_headers['OPTIONS']['webstore.e1-np.sonyentertainmentnetwork.com'] = 'Kamaji-Client';
+
+set cors['GET']['mgmt.store.sonyentertainmentnetwork.com'] = 1;
+set cors['OPTIONS']['mgmt.store.sonyentertainmentnetwork.com'] = 1;
+set cors_allow_headers['GET']['mgmt.store.sonyentertainmentnetwork.com'] = 'Kamaji-Client';
+set cors_allow_headers['OPTIONS']['mgmt.store.sonyentertainmentnetwork.com'] = 'Kamaji-Client';
+
+set cors['GET']['store.sonyentertainmentnetwork.com'] = 1;
+set cors['OPTIONS']['store.sonyentertainmentnetwork.com'] = 1;
+set cors_allow_headers['GET']['store.sonyentertainmentnetwork.com'] = 'Kamaji-Client';
+set cors_allow_headers['OPTIONS']['store.sonyentertainmentnetwork.com'] = 'Kamaji-Client';
+
+set cors['GET']['kamaji_commerce'] = 1;
+set cors['OPTIONS']['kamaji_commerce'] = 1;
+set cors['POST']['kamaji_commerce'] = 1;
+
+set cors['GET']['commerce1-lv.api.np.km.playstation.net'] = 1;
+set cors['POST']['commerce1-lv.api.np.km.playstation.net'] = 1;
+set cors['PUT']['commerce1-lv.api.np.km.playstation.net'] = 1;
+set cors['DELETE']['commerce1-lv.api.np.km.playstation.net'] = 1;
+
+set cors['GET']['themis.dl.playstation.net'] = 1;
+set cors['GET']['kamaji_commerce'] = 1;
+set cors['GET']['kamaji_feed-api'] = 1;
+
+set cors['GET']['kamaji_activity'] = 1;
+set cors['DELETE']['kamaji_activity'] = 1;
+set cors['POST']['kamaji_activity'] = 1;
+
+set cors['POST']['kamaji_regcam'] = 1;
+set cors['GET']['kamaji_regcam'] = 1;
+set cors['DELETE']['kamaji_regcam'] = 1;
+
+set cors['POST']['kamaji_kamaji-filestore'] = 1;
+set cors['GET']['kamaji_kamaji-filestore'] = 1;
+set cors['DELETE']['kamaji_kamaji-filestore'] = 1;
+
+set cors['POST']['kamaji_graph'] = 1;
+set cors['GET']['kamaji_graph'] = 1;
+set cors['DELETE']['kamaji_graph'] = 1;
+set cors['OPTIONS']['kamaji_graph'] = 1;
+set cors['HEAD']['kamaji_graph'] = 1;
+
+set cors['POST']['kamaji_hbs'] = 1;
+set cors['GET']['kamaji_hbs'] = 1;
+set cors['DELETE']['kamaji_hbs'] = 1;
+
+set cors['GET']['kamaji_recs-api'] = 1;
+set cors['HEAD']['kamaji_recs-api'] = 1;
+set cors['OPTIONS']['kamaji_recs-api'] = 1;
+set cors['HEAD']['kamaji_recs-api'] = 1;
+
+set cors_allow_headers['GET']['kamaji_recs-api'] = 'Accept, X-Requested-With, Authorization, Kamaji-Client';
+set cors_allow_headers['HEAD']['kamaji_recs-api'] = 'Accept, X-Requested-With, Authorization, Kamaji-Client';
+set cors_allow_headers['OPTIONS']['kamaji_recs-api'] = 'Accept, X-Requested-With, Authorization, Kamaji-Client';
+set cors_allow_headers['HEAD']['kamaji_recs-api'] = 'Accept, X-Requested-With, Authorization, Kamaji-Client';
+
+set cors_supported_methods['OPTIONS']['kamaji_recs-api'] = 'GET, OPTIONS';
+set cors_supported_methods['OPTIONS']['kamaji_graph'] = 'GET, OPTIONS';
+
+set cors_allow_headers['GET']['kamaji_graph'] = 'X-Requested-With,Authorization,Content-Type,Cache-Control';
+set cors_allow_headers['POST']['kamaji_graph'] = 'X-Requested-With,Authorization,Content-Type,Cache-Control';
+set cors_allow_headers['DELETE']['kamaji_graph'] = 'X-Requested-With,Authorization,Content-Type,Cache-Control';
+set cors_allow_headers['OPTIONS']['kamaji_graph'] = 'X-Requested-With,Authorization,Content-Type,Cache-Control';
+set cors_allow_headers['HEAD']['kamaji_graph'] = 'X-Requested-With,Authorization,Content-Type,Cache-Control';
+
