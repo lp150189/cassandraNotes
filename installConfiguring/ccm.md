@@ -5,6 +5,7 @@
 	* Useful for configuring development and test clusters
 	* communicates with localhost only	
 	* not used for configuring production cluster
+	* meta-tool to control other tool
 
 2) CCM may target a cluster or its nodes
 	* one cluster always the current default for cluster commands
@@ -41,5 +42,4 @@ sudo ifconfig lo0 alias 127.0.1.4 up
 sudo ifconfig lo0 alias 127.0.1.5 up
 sudo ifconfig lo0 alias 127.0.1.6 up
 ```
-
 # We do this incase ccm start does not work
